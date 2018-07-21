@@ -35,7 +35,6 @@ public class JobProcessor implements ItemProcessor<Report, Report> {
 		inputItem.setProcessingFile(processingFile);
 		inputItem.setAcquirer(acquirer);
 		inputItem.setCommitSize(chunkCommitSize);
-		
 		System.out.println("Processing Item:" + inputItem );
 		
 		return inputItem;
