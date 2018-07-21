@@ -8,8 +8,6 @@ import java.util.List;
 public class BatchFileUtils {
 	public static String FILE_PREFIX = "Acquirer";
 
-	public List<String> SUPPORTED_ACQUIRERS = Arrays.asList("visa", "mastercard", "amex", "diners");
-
 	public static String MOVED_FILE_SUFFIX = ".processing";
 
 	public static String ACQUIRER_NAME_KEY = "Acquirer";

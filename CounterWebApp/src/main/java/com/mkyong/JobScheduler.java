@@ -31,7 +31,7 @@ public class JobScheduler {
 	@Autowired
 	private JobLauncher jobLauncher;
 
-	public static List<String> SUPPORTED_ACQUIRERS = Arrays.asList("visa", "mastercard", "amex", "diners");
+	public static List<String> SUPPORTED_ACQUIRERS = Arrays.asList("visa", "mastercard", "amex", "diners", "discover", "enroute", "jcb", "voyager");
 
 	public void runDeceptiveDomainsJob() {
 		try {
