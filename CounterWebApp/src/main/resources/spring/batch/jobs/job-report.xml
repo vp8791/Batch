@@ -57,7 +57,7 @@
 						<property name="names"
 							value="creditCardNumber" />
 					</bean>
-				</property>
+				</property>		
 				<property name="fieldSetMapper">
 
 					<!-- return back to reader, rather than a mapped object. -->
@@ -71,10 +71,9 @@
 					</bean>
 
 				</property>
-
 			</bean>
 		</property>
-
+		<property name="linesToSkip" value="1" />
 	</bean>
 
 	<bean id="myoracleItemWriter"
@@ -83,8 +82,8 @@
 		<property name="sql">
 			<value>
             <![CDATA[        
-            	insert into ACQUIRER_SETTLEMENTS(CREDIT_CARD_NUMBER, META_JOB_ID, META_JOB_START_TIME, META_PROCESSING_FILE, META_ACQUIRER, META_CHUNK_COMMIT_SIZE  ) values
-            	 (:creditCardNumber, :jobId, :loadedDate, :processingFile, :acquirer, :commitSize)
+            	insert into ACQUIRER_SETTLEMENTS(CREDIT_CARD_NUMBER, META_JOB_ID, META_JOB_START_TIME, META_PROCESSING_FILE, META_ACQUIRER, META_CHUNK_COMMIT_SIZE, META_LINE_NUMBER  ) values
+            	 (:creditCardNumber, :jobId, :loadedDate, :processingFile, :acquirer, :commitSize, :lineNumber)
             ]]>
 			</value>
 		</property>

@@ -13,11 +13,12 @@ public class Report extends BasePojo {
 
 	@Override
 	public String toString() {
-		return "Acquirer Data [creditCardNumber=" + creditCardNumber + ", getLoadedDate()=" + getLoadedDate() + ", getJobId()="
-				+ getJobId() + ", getProcessingFile()=" + getProcessingFile() + ", getAcquirer()=" + getAcquirer()
-				+ ", getCommitSize()=" + getCommitSize() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
+		return "Report [creditCardNumber=" + creditCardNumber + ", getLineNumber()=" + getLineNumber()
+				+ ", getLoadedDate()=" + getLoadedDate() + ", getJobId()=" + getJobId() + ", getProcessingFile()="
+				+ getProcessingFile() + ", getAcquirer()=" + getAcquirer() + ", getCommitSize()=" + getCommitSize()
+				+ "]";
 	}
+
 
 		
 	

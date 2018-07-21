@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import com.mkyong.DaoOperations;
+import com.mkyong.*;
 import com.mkyong.utils.*;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.Job;
@@ -16,6 +16,7 @@ import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 @Component("jobScheduler")
@@ -24,14 +25,19 @@ public class JobScheduler {
 	@Autowired
 	@Qualifier("reportJob")
 	private Job job;
+	
+	@Autowired
+	 private JdbcTemplate jdbcTemplate;
 
 	@Autowired
-	private DaoOperations daoOperations;
+	private DaoOperationsImpl daoOperations;
 
 	@Autowired
 	private JobLauncher jobLauncher;
 
 	public static List<String> SUPPORTED_ACQUIRERS = Arrays.asList("visa", "mastercard", "amex", "diners", "discover", "enroute", "jcb", "voyager");
+	
+	private static String LINE_NO_SEQUENCE =  "TEMP_LINE_NO_SEQ";
 
 	public void runDeceptiveDomainsJob() {
 		try {
@@ -61,6 +67,9 @@ public class JobScheduler {
 				System.out.println("=======Files to be Processed by jobId(" + jobId +")===========" + acquirer + "=====================" + filenamestoProcess.toString());
 
 				for (String processingFileName : filenamestoProcess) {
+					
+					jdbcTemplate.execute("CREATE SEQUENCE " + LINE_NO_SEQUENCE + " MINVALUE 1 MAXVALUE 999999999999999999999999999 START WITH 1 INCREMENT BY 1 ");
+					
 					System.out.println("Processing  File by JobId(" +  jobId + ")>" + processingFileName + "<  at " + new Date(System.currentTimeMillis()));
 					
 					JobParameters jobParams = new JobParametersBuilder().addString("currentJobStartTime", reportDate)
@@ -76,6 +85,7 @@ public class JobScheduler {
 							.toJobParameters();
 				
 					JobExecution execution = jobLauncher.run(job, jobParams);
+					jdbcTemplate.execute("  drop sequence " + LINE_NO_SEQUENCE);
 					
 					if (execution.getExitStatus().getExitCode().equals(ExitStatus.FAILED.getExitCode())) {			
 						File processFx = new File(processingFileName);	
@@ -91,8 +101,7 @@ public class JobScheduler {
 						System.out.println("=======Job Completed .. Moved file(" +  processingFileName + ") to (" + successFilePath + ")" );
 						
 					}  
-					
-					
+										
 					
 					System.out.println("===============Exit Status========== : " + execution.getStatus());
 
@@ -101,6 +110,8 @@ public class JobScheduler {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			
 		}
 
 		System.out.println("Done");
