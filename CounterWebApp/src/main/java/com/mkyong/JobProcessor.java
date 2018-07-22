@@ -37,15 +37,13 @@ public class JobProcessor implements ItemProcessor<Report, Report> {
 	@Override
 	public Report process(Report inputItem) throws Exception {
 		
-		String sql = "select TEMP_LINE_NO_SEQ.nextval from dual";
-		Long lineNumber = (Long) jdbcTemplate.queryForObject(sql, Long.class);
-		
 		inputItem.setJobId( jobId);
 		inputItem.setLoadedDate(jobStartTime);
 		inputItem.setProcessingFile(processingFile);
 		inputItem.setAcquirer(acquirer);
 		inputItem.setCommitSize(chunkCommitSize);
-		inputItem.setLineNumber(Long.toString(lineNumber));
+		inputItem.setLineNumber(Long.toString(SequenceGenerator.getCounter(acquirer)));
+		
 		System.out.println("Processing Item:" + inputItem );
 		
 		return inputItem;

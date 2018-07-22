@@ -35,10 +35,13 @@ public class JobScheduler {
 	@Autowired
 	private JobLauncher jobLauncher;
 
-	public static List<String> SUPPORTED_ACQUIRERS = Arrays.asList("visa", "mastercard", "amex", "diners", "discover", "enroute", "jcb", "voyager");
-	
+	public static List<String> SUPPORTED_ACQUIRERS = Arrays.asList(BATCHCONSTANTS.VISA_ACQUIRER, BATCHCONSTANTS.MASTERCARD_ACQUIRER, 
+			BATCHCONSTANTS.AMEX_ACQUIRER,BATCHCONSTANTS.DINERS_ACQUIRER,BATCHCONSTANTS.DISCOVER_ACQUIRER,BATCHCONSTANTS.ENROUTE_ACQUIRER,
+			BATCHCONSTANTS.JCB_ACQUIRER,BATCHCONSTANTS.VOYAGER_ACQUIRER);
+	// public static List<String> SUPPORTED_ACQUIRERS = Arrays.asList("visa");
 	private static String LINE_NO_SEQUENCE =  "TEMP_LINE_NO_SEQ";
 
+	
 	public void runDeceptiveDomainsJob() {
 		try {
 			Date currentJobStartTime = new Date(System.currentTimeMillis());
@@ -68,7 +71,7 @@ public class JobScheduler {
 
 				for (String processingFileName : filenamestoProcess) {
 					
-					jdbcTemplate.execute("CREATE SEQUENCE " + LINE_NO_SEQUENCE + " MINVALUE 1 MAXVALUE 999999999999999999999999999 START WITH 1 INCREMENT BY 1 ");
+					SequenceGenerator instance = SequenceGenerator.getInstance();
 					
 					System.out.println("Processing  File by JobId(" +  jobId + ")>" + processingFileName + "<  at " + new Date(System.currentTimeMillis()));
 					
@@ -84,27 +87,29 @@ public class JobScheduler {
 							 addString("jobId", Long.toString(jobId))
 							.toJobParameters();
 				
-					JobExecution execution = jobLauncher.run(job, jobParams);
-					jdbcTemplate.execute("  drop sequence " + LINE_NO_SEQUENCE);
-					
-					if (execution.getExitStatus().getExitCode().equals(ExitStatus.FAILED.getExitCode())) {			
-						File processFx = new File(processingFileName);	
-						String errorFilePath = errorDirectory + "/" + processFx.getName() + "."+ System.currentTimeMillis() + ".error";
-						BatchFileUtils.moveFile(processingFileName,  errorFilePath);
-						System.out.println("=======Job Failed .. Moved file(" +  processingFileName + ") to (" + errorFilePath + ")" );
-					}  
-					
-					if (execution.getExitStatus().getExitCode().equals(ExitStatus.COMPLETED .getExitCode())) {			
-						File processFx = new File(processingFileName);	
-						String successFilePath = successDirectory + "/" + processFx.getName() + "."+ System.currentTimeMillis() +  ".success";
-						BatchFileUtils.moveFile(processingFileName,  successFilePath);
-						System.out.println("=======Job Completed .. Moved file(" +  processingFileName + ") to (" + successFilePath + ")" );
+					try {
+						JobExecution execution = jobLauncher.run(job, jobParams);
+						System.out.println("===============Exit Status========== : " + execution.getStatus());			
+						if (execution.getExitStatus().getExitCode().equals(ExitStatus.FAILED.getExitCode())) {			
+							File processFx = new File(processingFileName);	
+							String errorFilePath = errorDirectory + "/" + processFx.getName() + "."+ System.currentTimeMillis() + ".error";
+							BatchFileUtils.moveFile(processingFileName,  errorFilePath);
+							System.out.println("=======Job Failed .. Moved file(" +  processingFileName + ") to (" + errorFilePath + ")" );
+						}  
 						
-					}  
-										
-					
-					System.out.println("===============Exit Status========== : " + execution.getStatus());
-
+						if (execution.getExitStatus().getExitCode().equals(ExitStatus.COMPLETED .getExitCode())) {			
+							File processFx = new File(processingFileName);	
+							String successFilePath = successDirectory + "/" + processFx.getName() + "."+ System.currentTimeMillis() +  ".success";
+							BatchFileUtils.moveFile(processingFileName,  successFilePath);
+							System.out.println("=======Job Completed .. Moved file(" +  processingFileName + ") to (" + successFilePath + ")" );					
+						}  
+						
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} finally {
+					}
+									
 				}
 			}
 
