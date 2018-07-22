@@ -31,21 +31,21 @@ public class SequenceGenerator {
 	}
 
 	public static long getCounter(String acquirer) {
-		if (acquirer.equals(BATCHCONSTANTS.VISA_ACQUIRER)) {
+		if (acquirer.equals(BatchConstants.VISA_ACQUIRER)) {
 			return visa.getAndIncrement();
-		} else if (acquirer.equals(BATCHCONSTANTS.MASTERCARD_ACQUIRER)) {
+		} else if (acquirer.equals(BatchConstants.MASTERCARD_ACQUIRER)) {
 			return mastercard.getAndIncrement();
-		} else if (acquirer.equals(BATCHCONSTANTS.AMEX_ACQUIRER)) {
+		} else if (acquirer.equals(BatchConstants.AMEX_ACQUIRER)) {
 			return amex.getAndIncrement();
-		} else if (acquirer.equals(BATCHCONSTANTS.DINERS_ACQUIRER)) {
+		} else if (acquirer.equals(BatchConstants.DINERS_ACQUIRER)) {
 			return diners.getAndIncrement();
-		} else if (acquirer.equals(BATCHCONSTANTS.DISCOVER_ACQUIRER)) {
+		} else if (acquirer.equals(BatchConstants.DISCOVER_ACQUIRER)) {
 			return discover.getAndIncrement();
-		} else if (acquirer.equals(BATCHCONSTANTS.ENROUTE_ACQUIRER)) {
+		} else if (acquirer.equals(BatchConstants.ENROUTE_ACQUIRER)) {
 			return enroute.getAndIncrement();
-		} else if (acquirer.equals(BATCHCONSTANTS.JCB_ACQUIRER)) {
+		} else if (acquirer.equals(BatchConstants.JCB_ACQUIRER)) {
 			return jcb.getAndIncrement();
-		} else if (acquirer.equals(BATCHCONSTANTS.VOYAGER_ACQUIRER)) {
+		} else if (acquirer.equals(BatchConstants.VOYAGER_ACQUIRER)) {
 			return voyager.getAndIncrement();
 		} else {
 			throw new RuntimeException("Acquirer(" + acquirer + ") not supported");

@@ -1,6 +1,6 @@
 package com.mkyong;
 
-public interface BATCHCONSTANTS {
+public interface BatchConstants {
 	
 	public static String VISA_ACQUIRER = "visa";
 	public static String MASTERCARD_ACQUIRER = "mastercard";

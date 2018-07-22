@@ -3,16 +3,16 @@ package com.mkyong.model;
 public class BasePojo {
 	
 	private String loadedDate;
-	private String jobId;
+	private Long jobId;
 	private String processingFile;
 	private String acquirer;
-	private String commitSize;
-	private String lineNumber;
+	private Long commitSize;
+	private Long lineNumber;
 	
-	public String getLineNumber() {
+	public Long getLineNumber() {
 		return lineNumber;
 	}
-	public void setLineNumber(String lineNumber) {
+	public void setLineNumber(Long lineNumber) {
 		this.lineNumber = lineNumber;
 	}
 	public String getLoadedDate() {
@@ -21,10 +21,10 @@ public class BasePojo {
 	public void setLoadedDate(String loadedDate) {
 		this.loadedDate = loadedDate;
 	}
-	public String getJobId() {
+	public Long getJobId() {
 		return jobId;
 	}
-	public void setJobId(String jobId) {
+	public void setJobId(Long jobId) {
 		this.jobId = jobId;
 	}
 	public String getProcessingFile() {
@@ -39,10 +39,10 @@ public class BasePojo {
 	public void setAcquirer(String acquirer) {
 		this.acquirer = acquirer;
 	}
-	public String getCommitSize() {
+	public Long getCommitSize() {
 		return commitSize;
 	}
-	public void setCommitSize(String commitSize) {
+	public void setCommitSize(Long commitSize) {
 		this.commitSize = commitSize;
 	}
 	

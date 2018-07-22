@@ -8,8 +8,6 @@ import java.util.List;
 public class BatchFileUtils {
 	public static String FILE_PREFIX = "Acquirer";
 
-	public static String MOVED_FILE_SUFFIX = ".processing";
-
 	public static String ACQUIRER_NAME_KEY = "Acquirer";
 	public static String FILE_NAME_KEY = "file";
 
@@ -24,9 +22,9 @@ public class BatchFileUtils {
 			for (File file : files) {
 				if (!file.isDirectory()) {
 					boolean mvFile = moveFile(sourceDirectory, file.getName(), destDirectory,
-							file.getName() + MOVED_FILE_SUFFIX);
+							file.getName() );
 					if (mvFile) {
-						fileNames.add(destDirectory + "/" + file.getName() + MOVED_FILE_SUFFIX);
+						fileNames.add(destDirectory + "/" + file.getName());
 					}
 				}
 			}

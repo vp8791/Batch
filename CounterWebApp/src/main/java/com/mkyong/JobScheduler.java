@@ -35,9 +35,9 @@ public class JobScheduler {
 	@Autowired
 	private JobLauncher jobLauncher;
 
-	public static List<String> SUPPORTED_ACQUIRERS = Arrays.asList(BATCHCONSTANTS.VISA_ACQUIRER, BATCHCONSTANTS.MASTERCARD_ACQUIRER, 
-			BATCHCONSTANTS.AMEX_ACQUIRER,BATCHCONSTANTS.DINERS_ACQUIRER,BATCHCONSTANTS.DISCOVER_ACQUIRER,BATCHCONSTANTS.ENROUTE_ACQUIRER,
-			BATCHCONSTANTS.JCB_ACQUIRER,BATCHCONSTANTS.VOYAGER_ACQUIRER);
+	public static List<String> SUPPORTED_ACQUIRERS = Arrays.asList(BatchConstants.VISA_ACQUIRER, BatchConstants.MASTERCARD_ACQUIRER, 
+			BatchConstants.AMEX_ACQUIRER,BatchConstants.DINERS_ACQUIRER,BatchConstants.DISCOVER_ACQUIRER,BatchConstants.ENROUTE_ACQUIRER,
+			BatchConstants.JCB_ACQUIRER,BatchConstants.VOYAGER_ACQUIRER);
 	// public static List<String> SUPPORTED_ACQUIRERS = Arrays.asList("visa");
 	private static String LINE_NO_SEQUENCE =  "TEMP_LINE_NO_SEQ";
 
@@ -92,14 +92,14 @@ public class JobScheduler {
 						System.out.println("===============Exit Status========== : " + execution.getStatus());			
 						if (execution.getExitStatus().getExitCode().equals(ExitStatus.FAILED.getExitCode())) {			
 							File processFx = new File(processingFileName);	
-							String errorFilePath = errorDirectory + "/" + processFx.getName() + "."+ System.currentTimeMillis() + ".error";
+							String errorFilePath = errorDirectory + "/" + processFx.getName() + "." + Long.toString(jobId) + ".error";
 							BatchFileUtils.moveFile(processingFileName,  errorFilePath);
 							System.out.println("=======Job Failed .. Moved file(" +  processingFileName + ") to (" + errorFilePath + ")" );
 						}  
 						
 						if (execution.getExitStatus().getExitCode().equals(ExitStatus.COMPLETED .getExitCode())) {			
 							File processFx = new File(processingFileName);	
-							String successFilePath = successDirectory + "/" + processFx.getName() + "."+ System.currentTimeMillis() +  ".success";
+							String successFilePath = successDirectory + "/" + processFx.getName()  + "." + Long.toString(jobId) + ".success";
 							BatchFileUtils.moveFile(processingFileName,  successFilePath);
 							System.out.println("=======Job Completed .. Moved file(" +  processingFileName + ") to (" + successFilePath + ")" );					
 						}  
