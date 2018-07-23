@@ -48,14 +48,17 @@ public class JobScheduler {
 			DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 			String reportDate = df.format(currentJobStartTime);
 
-			Long jobId = daoOperations.getJobId();
-			String landingDirectory = daoOperations.getLandingDirectory();
-			String processingDirectry = daoOperations.getProcessingDirectory();
-			String successDirectory = daoOperations.getSuccessfullyProcessedDirectory();
-			String errorDirectory = daoOperations.getErrorDirectory();
-			Long commitCount = daoOperations.getChunkCommitCount();
+			
 			System.out.println("==========About to Start Job============");
 			for (String acquirer : SUPPORTED_ACQUIRERS) {
+			
+				Long jobId = daoOperations.getJobId();
+				String landingDirectory = daoOperations.getLandingDirectory();
+				String processingDirectry = daoOperations.getProcessingDirectory();
+				String successDirectory = daoOperations.getSuccessfullyProcessedDirectory();
+				String errorDirectory = daoOperations.getErrorDirectory();
+				Long commitCount = daoOperations.getChunkCommitCount();
+				
 				System.out.println("About to Process Job with following parameters");
 				System.out.println("jobId(" + jobId + ")");
 				System.out.println("landingDirectory(" + landingDirectory + ")");
