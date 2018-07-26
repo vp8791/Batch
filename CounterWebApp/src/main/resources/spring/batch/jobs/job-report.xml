@@ -22,12 +22,22 @@
 
 	<bean id="report" class="com.mkyong.model.Report"
 		scope="prototype" />
+		
+	<bean id="compositeProcessor" class="org.springframework.batch.item.support.CompositeItemProcessor">
+	<property name="delegates">
+		<list>
+			<ref bean="settlementValidationProcessor" />
+			<ref bean="jobProcessor" />
+		</list>
+	</property>
+</bean>	
+		
 
 	<batch:job id="reportJob">
 		<batch:step id="step1">
 			<batch:tasklet>
 				<batch:chunk reader="cvsFileItemReader"
-					processor="jobProcessor" writer="myoracleItemWriter"
+					processor="compositeProcessor" writer="myoracleItemWriter"
 					commit-interval="#{jobParameters[commitSize]}">
 				</batch:chunk>
 			</batch:tasklet>
@@ -93,6 +103,16 @@
 				class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
 		</property>
 	</bean>
+	
+	
+
+	 <bean id="settlementValidationProcessor"       
+	 	  class="org.springframework.batch.item.validator.ValidatingItemProcessor">   
+	 	<property name="validator">    
+	 	         <bean class="com.mkyong.validators.BeanValidator"/>
+	 	</property> 
+	</bean>
+
 
 
 	<task:scheduled-tasks>
