@@ -12,19 +12,19 @@ public class TransactionItemWriterListener implements ItemWriteListener<Report> 
 
 	@Override
 	public void beforeWrite(List<? extends Report> items) {
-		System.out.println("TransactionItemWriterListener - beforeWrite");
+		//System.out.println("TransactionItemWriterListener - beforeWrite");
 		
 	}
 
 	@Override
 	public void afterWrite(List<? extends Report> items) {
-		System.out.println("TransactionItemWriterListener - afterWrite");
+		//System.out.println("TransactionItemWriterListener - afterWrite");
 		
 	}
 
 	@Override
 	public void onWriteError(Exception exception, List<? extends Report> items) {
-	  System.out.println("TransactionItemWriterListener - onWriteError");	
+	  //System.out.println("TransactionItemWriterListener - onWriteError");	
 	}
 
 

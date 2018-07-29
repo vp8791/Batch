@@ -47,7 +47,7 @@
 				<batch:listeners>				
 					<batch:listener ref="transactionItemReaderListener" />
 					<batch:listener ref="transactionItemWriterListener" />
-					<batch:listener ref="itemSkipListener" />
+					<batch:listener ref="missedItemsSkipListener" />
 		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
@@ -68,7 +68,7 @@
 				<batch:listeners>				
 					<batch:listener ref="transactionItemReaderListener" />
 					<batch:listener ref="transactionItemWriterListener" />
-					<batch:listener ref="itemSkipListener" />
+					<batch:listener ref="missedItemsSkipListener" />
 		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
@@ -90,7 +90,7 @@
 				<batch:listeners>				
 					<batch:listener ref="transactionItemReaderListener" />
 					<batch:listener ref="transactionItemWriterListener" />
-					<batch:listener ref="itemSkipListener" />
+					<batch:listener ref="missedItemsSkipListener" />
 		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
@@ -110,7 +110,7 @@
 				<batch:listeners>				
 					<batch:listener ref="transactionItemReaderListener" />
 					<batch:listener ref="transactionItemWriterListener" />
-					<batch:listener ref="itemSkipListener" />
+					<batch:listener ref="missedItemsSkipListener" />
 		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
@@ -130,7 +130,7 @@
 				<batch:listeners>				
 					<batch:listener ref="transactionItemReaderListener" />
 					<batch:listener ref="transactionItemWriterListener" />
-					<batch:listener ref="itemSkipListener" />
+					<batch:listener ref="missedItemsSkipListener" />
 		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
@@ -151,7 +151,7 @@
 				<batch:listeners>				
 					<batch:listener ref="transactionItemReaderListener" />
 					<batch:listener ref="transactionItemWriterListener" />
-					<batch:listener ref="itemSkipListener" />
+					<batch:listener ref="missedItemsSkipListener" />
 		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
@@ -171,7 +171,7 @@
 				<batch:listeners>				
 					<batch:listener ref="transactionItemReaderListener" />
 					<batch:listener ref="transactionItemWriterListener" />
-					<batch:listener ref="itemSkipListener" />
+					<batch:listener ref="missedItemsSkipListener" />
 		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
@@ -191,7 +191,7 @@
 				<batch:listeners>				
 					<batch:listener ref="transactionItemReaderListener" />
 					<batch:listener ref="transactionItemWriterListener" />
-					<batch:listener ref="itemSkipListener" />
+					<batch:listener ref="missedItemsSkipListener" />
 		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
@@ -245,8 +245,8 @@
 		<property name="sql">
 			<value>
             <![CDATA[        
-            	insert into ACQUIRER_SETTLEMENTS(CREDIT_CARD_NUMBER, META_JOB_ID, META_JOB_START_TIME, META_PROCESSING_FILE, META_ACQUIRER, META_CHUNK_COMMIT_SIZE, META_LINE_NUMBER  ) values
-            	 (:creditCardNumber, :jobId, :loadedDate, :processingFile, :acquirer, :commitSize, :lineNumber)
+            	insert into ACQUIRER_SETTLEMENTS(CREDIT_CARD_NUMBER, META_JOB_ID, META_JOB_START_TIME, META_PROCESSING_FILE, META_ACQUIRER, META_CHUNK_COMMIT_SIZE  ) values
+            	 (:creditCardNumber, :jobId, :loadedDate, :processingFile, :acquirer, :commitSize)
             ]]>
 			</value>
 		</property>
@@ -258,14 +258,12 @@
 	</bean>
 	
 	
-
 	 <bean id="settlementValidationProcessor"       
 	 	  class="org.springframework.batch.item.validator.ValidatingItemProcessor">   
 	 	<property name="validator">    
 	 	         <bean class="com.mkyong.validators.BeanValidator"/>
 	 	</property> 
 	</bean>
-
 
 
 	<task:scheduled-tasks>

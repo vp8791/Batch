@@ -113,8 +113,6 @@ public class JobScheduler {
 
 				for (String processingFileName : filenamestoProcess) {
 					
-					SequenceGenerator instance = SequenceGenerator.getInstance();
-					
 					System.out.println("Processing  File by JobId(" +  jobId + ")>" + processingFileName + "<  at " + new Date(System.currentTimeMillis()));
 					
 					JobParameters jobParams = new JobParametersBuilder().addString("currentJobStartTime", reportDate)

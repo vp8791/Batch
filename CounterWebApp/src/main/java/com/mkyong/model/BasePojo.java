@@ -7,14 +7,7 @@ public class BasePojo {
 	private String processingFile;
 	private String acquirer;
 	private Long commitSize;
-	private Long lineNumber;
-	
-	public Long getLineNumber() {
-		return lineNumber;
-	}
-	public void setLineNumber(Long lineNumber) {
-		this.lineNumber = lineNumber;
-	}
+
 	public String getLoadedDate() {
 		return loadedDate;
 	}

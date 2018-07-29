@@ -38,9 +38,7 @@ public class JobProcessor implements ItemProcessor<Report, Report> {
 		inputItem.setLoadedDate(jobStartTime);
 		inputItem.setProcessingFile(processingFile);
 		inputItem.setAcquirer(acquirer);
-		inputItem.setCommitSize(Long.parseLong(chunkCommitSize));
-		inputItem.setLineNumber(SequenceGenerator.getCounter(acquirer));
-		
+		inputItem.setCommitSize(Long.parseLong(chunkCommitSize));		
 		System.out.println("Processing Item:" + inputItem );
 		
 		return inputItem;

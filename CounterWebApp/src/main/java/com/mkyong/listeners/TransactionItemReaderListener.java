@@ -10,19 +10,19 @@ public class TransactionItemReaderListener implements ItemReadListener<Report> {
 
 	@Override
 	public void beforeRead() {
-		System.out.println("TransactionItemReaderListener - beforeRead");
+		//System.out.println("TransactionItemReaderListener - beforeRead");
 		
 	}
 
 	@Override
 	public void afterRead(Report item) {
-		System.out.println("TransactionItemReaderListener - afterRead");
+		//System.out.println("TransactionItemReaderListener - afterRead");
 		
 	}
 
 	@Override
 	public void onReadError(Exception ex) {
-		System.out.println("TransactionItemReaderListener - onReadError");	
+		//System.out.println("TransactionItemReaderListener - onReadError");	
 	}
 
 }
