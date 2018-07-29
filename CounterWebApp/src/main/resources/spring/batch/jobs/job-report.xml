@@ -38,8 +38,17 @@
 			<batch:tasklet>
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
-					commit-interval="#{jobParameters[commitSize]}">
+					commit-interval="#{jobParameters[commitSize]}" 
+					skip-limit="10000" >
+					 <batch:skippable-exception-classes>
+					       <batch:include class="java.lang.Exception"/>                                         
+					 </batch:skippable-exception-classes> 
 				</batch:chunk>
+				<batch:listeners>				
+					<batch:listener ref="transactionItemReaderListener" />
+					<batch:listener ref="transactionItemWriterListener" />
+					<batch:listener ref="itemSkipListener" />
+		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
 	</batch:job>
@@ -50,8 +59,17 @@
 			<batch:tasklet>
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
-					commit-interval="#{jobParameters[commitSize]}">
+					commit-interval="#{jobParameters[commitSize]}"
+					skip-limit="10000">
+					 <batch:skippable-exception-classes>
+					       <batch:include class="java.lang.Exception"/>                                         
+					 </batch:skippable-exception-classes> 
 				</batch:chunk>
+				<batch:listeners>				
+					<batch:listener ref="transactionItemReaderListener" />
+					<batch:listener ref="transactionItemWriterListener" />
+					<batch:listener ref="itemSkipListener" />
+		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
 	</batch:job>
@@ -62,8 +80,18 @@
 			<batch:tasklet>
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
-					commit-interval="#{jobParameters[commitSize]}">
+					commit-interval="#{jobParameters[commitSize]}"
+					skip-limit="10000">
+					<batch:skippable-exception-classes>
+					       <batch:include class="java.lang.Exception"/>                                         
+					 </batch:skippable-exception-classes> 
 				</batch:chunk>
+				
+				<batch:listeners>				
+					<batch:listener ref="transactionItemReaderListener" />
+					<batch:listener ref="transactionItemWriterListener" />
+					<batch:listener ref="itemSkipListener" />
+		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
 	</batch:job>
@@ -73,8 +101,17 @@
 			<batch:tasklet>
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
-					commit-interval="#{jobParameters[commitSize]}">
+					commit-interval="#{jobParameters[commitSize]}"
+					skip-limit="10000">
+					<batch:skippable-exception-classes>
+					       <batch:include class="java.lang.Exception"/>                                         
+					 </batch:skippable-exception-classes> 
 				</batch:chunk>
+				<batch:listeners>				
+					<batch:listener ref="transactionItemReaderListener" />
+					<batch:listener ref="transactionItemWriterListener" />
+					<batch:listener ref="itemSkipListener" />
+		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
 	</batch:job>
@@ -84,8 +121,17 @@
 			<batch:tasklet>
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
-					commit-interval="#{jobParameters[commitSize]}">
+					commit-interval="#{jobParameters[commitSize]}"
+					skip-limit="10000">
+					<batch:skippable-exception-classes>
+					       <batch:include class="java.lang.Exception"/>                                         
+					 </batch:skippable-exception-classes> 
 				</batch:chunk>
+				<batch:listeners>				
+					<batch:listener ref="transactionItemReaderListener" />
+					<batch:listener ref="transactionItemWriterListener" />
+					<batch:listener ref="itemSkipListener" />
+		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
 	</batch:job>
@@ -96,8 +142,17 @@
 			<batch:tasklet>
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
-					commit-interval="#{jobParameters[commitSize]}">
+					commit-interval="#{jobParameters[commitSize]}"
+					skip-limit="10000">
+					<batch:skippable-exception-classes>
+					       <batch:include class="java.lang.Exception"/>                                         
+					 </batch:skippable-exception-classes> 
 				</batch:chunk>
+				<batch:listeners>				
+					<batch:listener ref="transactionItemReaderListener" />
+					<batch:listener ref="transactionItemWriterListener" />
+					<batch:listener ref="itemSkipListener" />
+		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
 	</batch:job>
@@ -107,8 +162,17 @@
 			<batch:tasklet>
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
-					commit-interval="#{jobParameters[commitSize]}">
+					commit-interval="#{jobParameters[commitSize]}"
+					skip-limit="10000">
+					<batch:skippable-exception-classes>
+					       <batch:include class="java.lang.Exception"/>                                         
+					 </batch:skippable-exception-classes> 
 				</batch:chunk>
+				<batch:listeners>				
+					<batch:listener ref="transactionItemReaderListener" />
+					<batch:listener ref="transactionItemWriterListener" />
+					<batch:listener ref="itemSkipListener" />
+		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
 	</batch:job>
@@ -118,8 +182,17 @@
 			<batch:tasklet>
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
-					commit-interval="#{jobParameters[commitSize]}">
+					commit-interval="#{jobParameters[commitSize]}"
+					skip-limit="10000">
+					<batch:skippable-exception-classes>
+					       <batch:include class="java.lang.Exception"/>                                         
+					 </batch:skippable-exception-classes> 
 				</batch:chunk>
+				<batch:listeners>				
+					<batch:listener ref="transactionItemReaderListener" />
+					<batch:listener ref="transactionItemWriterListener" />
+					<batch:listener ref="itemSkipListener" />
+		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
 	</batch:job>

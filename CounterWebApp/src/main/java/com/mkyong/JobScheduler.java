@@ -92,7 +92,9 @@ public class JobScheduler {
 				String processingDirectry = daoOperations.getProcessingDirectory();
 				String successDirectory = daoOperations.getSuccessfullyProcessedDirectory();
 				String errorDirectory = daoOperations.getErrorDirectory();
+				String skipDirectory = daoOperations.getSkippableDirectory();
 				Long commitCount = daoOperations.getChunkCommitCount();
+				Long skipCount = daoOperations.getSkipCount();
 				
 				System.out.println("About to Process Job with following parameters");
 				System.out.println("jobId(" + jobId + ")");
@@ -101,6 +103,8 @@ public class JobScheduler {
 				System.out.println("successDirectory(" + successDirectory + ")");
 				System.out.println("errorDirectory(" + errorDirectory + ")");
 				System.out.println("commitSize(" + commitCount + ")");
+				System.out.println("skipCount(" + skipCount + ")");
+				System.out.println("skipDirectory(" + skipDirectory + ")");
 				System.out.println("jobId(" + jobId + ")");
 				
 				List<String> filenamestoProcess = BatchFileUtils.getFileNamesToBeProcessed(landingDirectory,
@@ -118,11 +122,13 @@ public class JobScheduler {
 							.addString("processingDirectry", processingDirectry)
 							.addString("successDirectory", successDirectory)
 							.addString("errorDirectory", errorDirectory)
+							.addString("skipDirectory", skipDirectory)
 							.addString("processingFile", processingFileName)
 							.addString("acquirer", acquirer)
 							.addString("chunkCommitSize", Long.toString(commitCount))
-							.addLong("commitSize", commitCount).
-							 addString("jobId", Long.toString(jobId))
+							.addLong("commitSize", commitCount)
+							.addString("skipCount",  Long.toString(skipCount))
+							.addString("jobId", Long.toString(jobId))
 							.toJobParameters();
 				
 					try {
