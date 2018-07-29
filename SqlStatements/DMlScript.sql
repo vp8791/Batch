@@ -5,7 +5,9 @@ drop table BATCH_JOB_EXECUTION_PARAMS;
 drop table BATCH_JOB_EXECUTION;
 drop table BATCH_JOB_INSTANCE;
 drop table ACQUIRER_SETTLEMENTS;
+drop table CONFIGURATION_PARAMETERS;
 drop sequence JOB_ID_SEQUENCE;
+
 --------------------------------------------------------
 --  File created - Sunday-July-22-2018   
 --------------------------------------------------------
@@ -312,7 +314,7 @@ drop sequence JOB_ID_SEQUENCE;
     
     CREATE TABLE ACQUIRER_SETTLEMENTS 
 (
-  CREDIT_CARD_NUMBER VARCHAR2(30 BYTE) NOT NULL 
+  CREDIT_CARD_NUMBER VARCHAR2(16 BYTE) NOT NULL 
 , META_JOB_ID NUMBER(20, 0) NOT NULL 
 , META_JOB_START_TIME VARCHAR2(100 BYTE) NOT NULL 
 , META_PROCESSING_FILE VARCHAR2(100 BYTE) NOT NULL 
@@ -321,6 +323,19 @@ drop sequence JOB_ID_SEQUENCE;
 , META_LINE_NUMBER NUMBER(20, 0) NOT NULL 
 );
 
+CREATE TABLE CONFIGURATION_PARAMETERS 
+(
+  KEY VARCHAR2(100 BYTE) 
+, VALUE VARCHAR2(100 BYTE) 
+);
+
 CREATE SEQUENCE JOB_ID_SEQUENCE INCREMENT BY 1 MAXVALUE 9999999999 MINVALUE 1 CACHE 20;
+
+Insert into CONFIGURATION_PARAMETERS (KEY,VALUE) values ('COMMIT_SIZE','5');
+Insert into CONFIGURATION_PARAMETERS (KEY,VALUE) values ('LANDING_DIRECTORY','/home/batchconfig/batch/landing');
+Insert into CONFIGURATION_PARAMETERS (KEY,VALUE) values ('SUCCESS_DIRECTORY','/home/batchconfig/batch/success');
+Insert into CONFIGURATION_PARAMETERS (KEY,VALUE) values ('ERROR_DIRECTORY','/home/batchconfig/batch/errors');
+Insert into CONFIGURATION_PARAMETERS (KEY,VALUE) values ('PROCESSING_DIRECTORY','/home/batchconfig/batch/processing');
+commit;
 
 
