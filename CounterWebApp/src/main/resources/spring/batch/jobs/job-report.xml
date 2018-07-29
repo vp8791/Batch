@@ -124,7 +124,8 @@
 					commit-interval="#{jobParameters[commitSize]}"
 					skip-limit="10000">
 					<batch:skippable-exception-classes>
-					       <batch:include class="java.lang.Exception"/>                                         
+					       <batch:include class="java.lang.Exception"/>     
+					        <batch:include class="org.springframework.batch.item.validator.ValidationException"/>                               
 					 </batch:skippable-exception-classes> 
 				</batch:chunk>
 				<batch:listeners>				
@@ -270,6 +271,5 @@
 		<task:scheduled ref="jobScheduler"
 			method="runDeceptiveDomainsJob" fixed-delay="${scheduled.delay}" />
 	</task:scheduled-tasks>
-
-
+	
 </beans>

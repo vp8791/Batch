@@ -112,7 +112,7 @@ public class JobScheduler {
 				System.out.println("=======Files to be Processed by jobId(" + jobId +")===========" + acquirer + "=====================" + filenamestoProcess.toString());
 
 				for (String processingFileName : filenamestoProcess) {
-					
+					File prcFile = new File(processingFileName);
 					System.out.println("Processing  File by JobId(" +  jobId + ")>" + processingFileName + "<  at " + new Date(System.currentTimeMillis()));
 					
 					JobParameters jobParams = new JobParametersBuilder().addString("currentJobStartTime", reportDate)
