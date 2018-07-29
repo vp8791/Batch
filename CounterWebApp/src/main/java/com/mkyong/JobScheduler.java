@@ -26,8 +26,39 @@ import org.springframework.stereotype.Component;
 public class JobScheduler {
 
 	@Autowired
-	@Qualifier("reportJob")
-	private Job job;
+	@Qualifier("LoadVisaSettlementsJob")
+	private Job loadVisaSettlementsJob;
+	
+	
+	@Autowired
+	@Qualifier("LoadMasterCardSettlementsJob")
+	private Job loadMasterCardSettlementsJob;
+	
+	@Autowired
+	@Qualifier("LoadJcbSettlementsJob")
+	private Job loadJcbSettlementsJob;
+	
+	@Autowired
+	@Qualifier("LoadDinersSettlementsJob")
+	private Job loadDinersSettlementsJob;
+	
+	@Autowired
+	@Qualifier("LoadAmexSettlementsJob")
+	private Job loadAmexSettlementsJob;
+	
+	@Autowired
+	@Qualifier("LoadDiscoverSettlementsJob")
+	private Job loadDiscoverSettlementsJob;
+	
+	@Autowired
+	@Qualifier("LoadEnrouteSettlementsJob")
+	private Job loadEnrouteSettlementsJob;
+	
+	@Autowired
+	@Qualifier("LoadVoyagerSettlementsJob")
+	private Job loadVoyagerSettlementsJob;
+	
+	
 	
 	@Autowired
 	 private JdbcTemplate jdbcTemplate;
@@ -95,7 +126,7 @@ public class JobScheduler {
 							.toJobParameters();
 				
 					try {
-						JobExecution execution = jobLauncher.run(job, jobParams);
+						JobExecution execution = jobLauncher.run(getJob(acquirer), jobParams);
 						System.out.println("===============Exit Status========== : " + execution.getStatus());			
 						if (execution.getExitStatus().getExitCode().equals(ExitStatus.FAILED.getExitCode())) {			
 							File processFx = new File(processingFileName);	
@@ -128,6 +159,28 @@ public class JobScheduler {
 
 		System.out.println("Done");
 
+	}
+	
+	public Job getJob(String acquirer) {
+		if (acquirer.equals(BatchConstants.VISA_ACQUIRER)) {
+			return loadVisaSettlementsJob;
+		} else if (acquirer.equals(BatchConstants.MASTERCARD_ACQUIRER)) {
+			return loadMasterCardSettlementsJob;
+		} else if (acquirer.equals(BatchConstants.AMEX_ACQUIRER)) {
+			return loadAmexSettlementsJob;
+		} else if (acquirer.equals(BatchConstants.DINERS_ACQUIRER)) {
+			return loadDinersSettlementsJob;
+		} else if (acquirer.equals(BatchConstants.DISCOVER_ACQUIRER)) {
+			return loadDiscoverSettlementsJob;
+		} else if (acquirer.equals(BatchConstants.ENROUTE_ACQUIRER)) {
+			return loadEnrouteSettlementsJob;
+		} else if (acquirer.equals(BatchConstants.JCB_ACQUIRER)) {
+			return loadJcbSettlementsJob;
+		} else if (acquirer.equals(BatchConstants.VOYAGER_ACQUIRER)) {
+			return loadVoyagerSettlementsJob;
+		} else {
+			throw new RuntimeException("Acquirer(" + acquirer + ") Job not not supported ");
+		}
 	}
 
 }
