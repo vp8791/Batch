@@ -39,9 +39,10 @@
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
 					commit-interval="#{jobParameters[commitSize]}" 
-					skip-limit="10000" >
+					skip-limit="1000000" >
 					 <batch:skippable-exception-classes>
-					       <batch:include class="java.lang.Exception"/>                                         
+					        <batch:include class="java.lang.Exception"/>     
+					        <batch:include class="org.springframework.batch.item.validator.ValidationException"/>                                            
 					 </batch:skippable-exception-classes> 
 				</batch:chunk>
 				<batch:listeners>				
@@ -60,9 +61,11 @@
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
 					commit-interval="#{jobParameters[commitSize]}"
-					skip-limit="10000">
+					skip-limit="1000000">
 					 <batch:skippable-exception-classes>
-					       <batch:include class="java.lang.Exception"/>                                         
+					       <batch:include class="java.lang.Exception"/>
+					        <batch:include class="java.lang.Exception"/>     
+					        <batch:include class="org.springframework.batch.item.validator.ValidationException"/>                                               
 					 </batch:skippable-exception-classes> 
 				</batch:chunk>
 				<batch:listeners>				
@@ -81,9 +84,10 @@
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
 					commit-interval="#{jobParameters[commitSize]}"
-					skip-limit="10000">
+					skip-limit="1000000">
 					<batch:skippable-exception-classes>
-					       <batch:include class="java.lang.Exception"/>                                         
+					        <batch:include class="java.lang.Exception"/>     
+					        <batch:include class="org.springframework.batch.item.validator.ValidationException"/>                                           
 					 </batch:skippable-exception-classes> 
 				</batch:chunk>
 				
@@ -102,9 +106,10 @@
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
 					commit-interval="#{jobParameters[commitSize]}"
-					skip-limit="10000">
+					skip-limit="1000000">
 					<batch:skippable-exception-classes>
-					       <batch:include class="java.lang.Exception"/>                                         
+					        <batch:include class="java.lang.Exception"/>     
+					        <batch:include class="org.springframework.batch.item.validator.ValidationException"/>                                              
 					 </batch:skippable-exception-classes> 
 				</batch:chunk>
 				<batch:listeners>				
@@ -122,7 +127,7 @@
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
 					commit-interval="#{jobParameters[commitSize]}"
-					skip-limit="10000">
+					skip-limit="1000000">
 					<batch:skippable-exception-classes>
 					       <batch:include class="java.lang.Exception"/>     
 					        <batch:include class="org.springframework.batch.item.validator.ValidationException"/>                               
@@ -144,9 +149,10 @@
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
 					commit-interval="#{jobParameters[commitSize]}"
-					skip-limit="10000">
+					skip-limit="1000000">
 					<batch:skippable-exception-classes>
-					       <batch:include class="java.lang.Exception"/>                                         
+					       <batch:include class="java.lang.Exception"/>     
+					        <batch:include class="org.springframework.batch.item.validator.ValidationException"/>                                           
 					 </batch:skippable-exception-classes> 
 				</batch:chunk>
 				<batch:listeners>				
@@ -164,9 +170,10 @@
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
 					commit-interval="#{jobParameters[commitSize]}"
-					skip-limit="10000">
+					skip-limit="1000000">
 					<batch:skippable-exception-classes>
-					       <batch:include class="java.lang.Exception"/>                                         
+					        <batch:include class="java.lang.Exception"/>     
+					        <batch:include class="org.springframework.batch.item.validator.ValidationException"/>                                             
 					 </batch:skippable-exception-classes> 
 				</batch:chunk>
 				<batch:listeners>				
@@ -184,9 +191,10 @@
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
 					commit-interval="#{jobParameters[commitSize]}"
-					skip-limit="10000">
+					skip-limit="1000000">
 					<batch:skippable-exception-classes>
-					       <batch:include class="java.lang.Exception"/>                                         
+					        <batch:include class="java.lang.Exception"/>     
+					        <batch:include class="org.springframework.batch.item.validator.ValidationException"/>                                              
 					 </batch:skippable-exception-classes> 
 				</batch:chunk>
 				<batch:listeners>				
