@@ -2,7 +2,11 @@ package com.mkyong.listeners;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
+import javax.management.RuntimeErrorException;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -77,16 +81,21 @@ public class MissedItemsSkipListener implements SkipListener<Report, Report> {
 		
 		StringBuilder itemToWrite = new StringBuilder();
 		itemToWrite.append(skipItem.getCreditCardNumber() + ":" + skipItem.getAcquirer() + ":" + jobId +  ":" + skipItem.getProcessingFile());
-		
+		List<String> lines = new ArrayList<String>();
+		lines.add(itemToWrite.toString());		
 		String skipFileName = (new File(processingFile)).getName() + ".skip";
-		File skipFile = new File(skipDirectory + "/" + skipFileName);
-		
+		File file_to_write = new File(skipDirectory + "/" + skipFileName);
+	
 		try {
-			FileUtils.writeStringToFile(skipFile, itemToWrite.toString());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
+            if(!file_to_write.exists()) {
+                List<String> header = new ArrayList<String>();
+                header.add("File Record:Acquirer:JobId:Processed File");        
+                FileUtils.writeLines(file_to_write, header, false);
+            }
+            FileUtils.writeLines(file_to_write,lines, true);
+        } catch (IOException e) {
+            throw new RuntimeException("Unable to write skip file to " + file_to_write.getAbsolutePath() , e);
+        }		
 	}
 
 }
