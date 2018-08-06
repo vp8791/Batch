@@ -56,29 +56,27 @@ public class JobScheduler {
 			System.out.println("==========About to Start Job============");
 			for (String acquirer : SUPPORTED_ACQUIRERS) {
 			
-				Long jobId = daoOperations.getJobId();
 				String landingDirectory = daoOperations.getLandingDirectory();
 				String processingDirectry = daoOperations.getProcessingDirectory();
 				String successDirectory = daoOperations.getSuccessfullyProcessedDirectory();
 				String errorDirectory = daoOperations.getErrorDirectory();
-				Long commitCount = daoOperations.getChunkCommitCount();
-				
-				System.out.println("About to Process Job with following parameters");
-				System.out.println("jobId(" + jobId + ")");
-				System.out.println("landingDirectory(" + landingDirectory + ")");
-				System.out.println("processingDirectry(" + processingDirectry + ")");
-				System.out.println("successDirectory(" + successDirectory + ")");
-				System.out.println("errorDirectory(" + errorDirectory + ")");
-				System.out.println("commitSize(" + commitCount + ")");
-				System.out.println("jobId(" + jobId + ")");
-				
+					
 				List<String> filenamestoProcess = BatchFileUtils.getFileNamesToBeProcessed(landingDirectory,
 						processingDirectry, acquirer);
-				System.out.println("=======Files to be Processed by jobId(" + jobId +")===========" + acquirer + "=====================" + filenamestoProcess.toString());
-
+			
 				for (String processingFileName : filenamestoProcess) {
-					
+					Long jobId = daoOperations.getJobId();
+					Long commitCount = daoOperations.getChunkCommitCount();
 					SequenceGenerator instance = SequenceGenerator.getInstance();
+					
+					System.out.println("About to Process Job with following parameters");
+					System.out.println("jobId(" + jobId + ")");
+					System.out.println("landingDirectory(" + landingDirectory + ")");
+					System.out.println("processingDirectry(" + processingDirectry + ")");
+					System.out.println("successDirectory(" + successDirectory + ")");
+					System.out.println("errorDirectory(" + errorDirectory + ")");
+					System.out.println("commitSize(" + commitCount + ")");
+					System.out.println("jobId(" + jobId + ")");
 					
 					System.out.println("Processing  File by JobId(" +  jobId + ")>" + processingFileName + "<  at " + new Date(System.currentTimeMillis()));
 					
