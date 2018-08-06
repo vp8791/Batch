@@ -87,7 +87,6 @@ public class JobScheduler {
 			System.out.println("==========About to Start Job============");
 			for (String acquirer : SUPPORTED_ACQUIRERS) {
 			
-				Long jobId = daoOperations.getJobId();
 				String landingDirectory = daoOperations.getLandingDirectory();
 				String processingDirectry = daoOperations.getProcessingDirectory();
 				String successDirectory = daoOperations.getSuccessfullyProcessedDirectory();
@@ -95,26 +94,26 @@ public class JobScheduler {
 				String skipDirectory = daoOperations.getSkippableDirectory();
 				Long commitCount = daoOperations.getChunkCommitCount();
 				Long skipCount = daoOperations.getSkipCount();
-				
-				System.out.println("About to Process Job with following parameters");
-				System.out.println("jobId(" + jobId + ")");
-				System.out.println("landingDirectory(" + landingDirectory + ")");
-				System.out.println("processingDirectry(" + processingDirectry + ")");
-				System.out.println("successDirectory(" + successDirectory + ")");
-				System.out.println("errorDirectory(" + errorDirectory + ")");
-				System.out.println("commitSize(" + commitCount + ")");
-				System.out.println("skipCount(" + skipCount + ")");
-				System.out.println("skipDirectory(" + skipDirectory + ")");
-				System.out.println("jobId(" + jobId + ")");
-				
+									
 				List<String> filenamestoProcess = BatchFileUtils.getFileNamesToBeProcessed(landingDirectory,
 						processingDirectry, acquirer);
-				System.out.println("=======Files to be Processed by jobId(" + jobId +")===========" + acquirer + "=====================" + filenamestoProcess.toString());
-
+				
 				for (String processingFileName : filenamestoProcess) {
 					File prcFile = new File(processingFileName);
-					System.out.println("Processing  File by JobId(" +  jobId + ")>" + processingFileName + "<  at " + new Date(System.currentTimeMillis()));
+					Long jobId = daoOperations.getJobId();
+					System.out.println("About to Process Job with following parameters");
+					System.out.println("jobId(" + jobId + ")");
+					System.out.println("landingDirectory(" + landingDirectory + ")");
+					System.out.println("processingDirectry(" + processingDirectry + ")");
+					System.out.println("successDirectory(" + successDirectory + ")");
+					System.out.println("errorDirectory(" + errorDirectory + ")");
+					System.out.println("commitSize(" + commitCount + ")");
+					System.out.println("skipCount(" + skipCount + ")");
+					System.out.println("skipDirectory(" + skipDirectory + ")");
+					System.out.println("jobId(" + jobId + ")");
 					
+					System.out.println("Processing  File by JobId(" +  jobId + ")>" + processingFileName + "<  at " + new Date(System.currentTimeMillis()));
+										
 					JobParameters jobParams = new JobParametersBuilder().addString("currentJobStartTime", reportDate)
 							.addString("landingDirectory", landingDirectory)
 							.addString("processingDirectry", processingDirectry)
