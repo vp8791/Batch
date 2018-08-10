@@ -1,5 +1,7 @@
 package com.mkyong.validators;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -8,8 +10,10 @@ import javax.validation.ValidatorFactory;
 import org.springframework.batch.item.validator.ValidationException;
 import org.springframework.batch.item.validator.Validator;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Component;
 
 @SuppressWarnings("rawtypes")
+@Component
 public class BeanValidator implements Validator, InitializingBean {
 
 	private javax.validation.Validator validator;
@@ -26,7 +30,7 @@ public class BeanValidator implements Validator, InitializingBean {
 		if (constraintViolations.size() > 0) {
 			buildValidationException(constraintViolations);
 		}
-	}
+	} 
 
 	private void buildValidationException(Set<ConstraintViolation<Object>> constraintViolations) {
 		StringBuilder message = new StringBuilder();

@@ -62,4 +62,20 @@ public class DaoOperationsImpl implements DaoOperations {
 		return configuration.getValue();
 	}
 
+	@Override
+	public String getSkippableDirectory() {
+		String sql = "SELECT * FROM CONFIGURATION_PARAMETERS WHERE KEY = 'SKIPPED_ITEMS_DIRECTORY'";
+		Configuration configuration = (Configuration)jdbcTemplate.queryForObject(
+				sql, new ConfigurationMapper());	
+		return configuration.getValue();
+	}
+
+	@Override
+	public Long getSkipCount() {
+		String sql = "SELECT * FROM CONFIGURATION_PARAMETERS WHERE KEY = 'SKIP_LIMIT'";
+		Configuration configuration = (Configuration)jdbcTemplate.queryForObject(
+				sql, new ConfigurationMapper());
+		return Long.parseLong(configuration.getValue());
+	}
+
 }

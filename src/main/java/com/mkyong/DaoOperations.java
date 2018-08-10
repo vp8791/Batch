@@ -13,5 +13,10 @@ public interface DaoOperations {
 	public String getSuccessfullyProcessedDirectory();
 	
 	public String getErrorDirectory();
+	
+	public String getSkippableDirectory();
+	
+	
+	public Long getSkipCount();
 
 }

@@ -38,8 +38,18 @@
 			<batch:tasklet>
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
-					commit-interval="#{jobParameters[commitSize]}">
+					commit-interval="#{jobParameters[commitSize]}" 
+					skip-limit="1000000" >
+					 <batch:skippable-exception-classes>
+					        <batch:include class="java.lang.Exception"/>     
+					        <batch:include class="org.springframework.batch.item.validator.ValidationException"/>                                            
+					 </batch:skippable-exception-classes> 
 				</batch:chunk>
+				<batch:listeners>				
+					<batch:listener ref="transactionItemReaderListener" />
+					<batch:listener ref="transactionItemWriterListener" />
+					<batch:listener ref="missedItemsSkipListener" />
+		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
 	</batch:job>
@@ -50,8 +60,19 @@
 			<batch:tasklet>
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
-					commit-interval="#{jobParameters[commitSize]}">
+					commit-interval="#{jobParameters[commitSize]}"
+					skip-limit="1000000">
+					 <batch:skippable-exception-classes>
+					       <batch:include class="java.lang.Exception"/>
+					        <batch:include class="java.lang.Exception"/>     
+					        <batch:include class="org.springframework.batch.item.validator.ValidationException"/>                                               
+					 </batch:skippable-exception-classes> 
 				</batch:chunk>
+				<batch:listeners>				
+					<batch:listener ref="transactionItemReaderListener" />
+					<batch:listener ref="transactionItemWriterListener" />
+					<batch:listener ref="missedItemsSkipListener" />
+		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
 	</batch:job>
@@ -62,8 +83,19 @@
 			<batch:tasklet>
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
-					commit-interval="#{jobParameters[commitSize]}">
+					commit-interval="#{jobParameters[commitSize]}"
+					skip-limit="1000000">
+					<batch:skippable-exception-classes>
+					        <batch:include class="java.lang.Exception"/>     
+					        <batch:include class="org.springframework.batch.item.validator.ValidationException"/>                                           
+					 </batch:skippable-exception-classes> 
 				</batch:chunk>
+				
+				<batch:listeners>				
+					<batch:listener ref="transactionItemReaderListener" />
+					<batch:listener ref="transactionItemWriterListener" />
+					<batch:listener ref="missedItemsSkipListener" />
+		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
 	</batch:job>
@@ -73,8 +105,18 @@
 			<batch:tasklet>
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
-					commit-interval="#{jobParameters[commitSize]}">
+					commit-interval="#{jobParameters[commitSize]}"
+					skip-limit="1000000">
+					<batch:skippable-exception-classes>
+					        <batch:include class="java.lang.Exception"/>     
+					        <batch:include class="org.springframework.batch.item.validator.ValidationException"/>                                              
+					 </batch:skippable-exception-classes> 
 				</batch:chunk>
+				<batch:listeners>				
+					<batch:listener ref="transactionItemReaderListener" />
+					<batch:listener ref="transactionItemWriterListener" />
+					<batch:listener ref="missedItemsSkipListener" />
+		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
 	</batch:job>
@@ -84,8 +126,18 @@
 			<batch:tasklet>
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
-					commit-interval="#{jobParameters[commitSize]}">
+					commit-interval="#{jobParameters[commitSize]}"
+					skip-limit="1000000">
+					<batch:skippable-exception-classes>
+					       <batch:include class="java.lang.Exception"/>     
+					        <batch:include class="org.springframework.batch.item.validator.ValidationException"/>                               
+					 </batch:skippable-exception-classes> 
 				</batch:chunk>
+				<batch:listeners>				
+					<batch:listener ref="transactionItemReaderListener" />
+					<batch:listener ref="transactionItemWriterListener" />
+					<batch:listener ref="missedItemsSkipListener" />
+		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
 	</batch:job>
@@ -96,8 +148,18 @@
 			<batch:tasklet>
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
-					commit-interval="#{jobParameters[commitSize]}">
+					commit-interval="#{jobParameters[commitSize]}"
+					skip-limit="1000000">
+					<batch:skippable-exception-classes>
+					       <batch:include class="java.lang.Exception"/>     
+					        <batch:include class="org.springframework.batch.item.validator.ValidationException"/>                                           
+					 </batch:skippable-exception-classes> 
 				</batch:chunk>
+				<batch:listeners>				
+					<batch:listener ref="transactionItemReaderListener" />
+					<batch:listener ref="transactionItemWriterListener" />
+					<batch:listener ref="missedItemsSkipListener" />
+		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
 	</batch:job>
@@ -107,8 +169,18 @@
 			<batch:tasklet>
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
-					commit-interval="#{jobParameters[commitSize]}">
+					commit-interval="#{jobParameters[commitSize]}"
+					skip-limit="1000000">
+					<batch:skippable-exception-classes>
+					        <batch:include class="java.lang.Exception"/>     
+					        <batch:include class="org.springframework.batch.item.validator.ValidationException"/>                                             
+					 </batch:skippable-exception-classes> 
 				</batch:chunk>
+				<batch:listeners>				
+					<batch:listener ref="transactionItemReaderListener" />
+					<batch:listener ref="transactionItemWriterListener" />
+					<batch:listener ref="missedItemsSkipListener" />
+		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
 	</batch:job>
@@ -118,8 +190,18 @@
 			<batch:tasklet>
 				<batch:chunk reader="cvsFileItemReader"
 					processor="compositeProcessor" writer="myoracleItemWriter"
-					commit-interval="#{jobParameters[commitSize]}">
+					commit-interval="#{jobParameters[commitSize]}"
+					skip-limit="1000000">
+					<batch:skippable-exception-classes>
+					        <batch:include class="java.lang.Exception"/>     
+					        <batch:include class="org.springframework.batch.item.validator.ValidationException"/>                                              
+					 </batch:skippable-exception-classes> 
 				</batch:chunk>
+				<batch:listeners>				
+					<batch:listener ref="transactionItemReaderListener" />
+					<batch:listener ref="transactionItemWriterListener" />
+					<batch:listener ref="missedItemsSkipListener" />
+		    	</batch:listeners>
 			</batch:tasklet>
 		</batch:step>
 	</batch:job>
@@ -172,8 +254,8 @@
 		<property name="sql">
 			<value>
             <![CDATA[        
-            	insert into ACQUIRER_SETTLEMENTS(CREDIT_CARD_NUMBER, META_JOB_ID, META_JOB_START_TIME, META_PROCESSING_FILE, META_ACQUIRER, META_CHUNK_COMMIT_SIZE, META_LINE_NUMBER  ) values
-            	 (:creditCardNumber, :jobId, :loadedDate, :processingFile, :acquirer, :commitSize, :lineNumber)
+            	insert into ACQUIRER_SETTLEMENTS(CREDIT_CARD_NUMBER, META_JOB_ID, META_JOB_START_TIME, META_PROCESSING_FILE, META_ACQUIRER, META_CHUNK_COMMIT_SIZE  ) values
+            	 (:creditCardNumber, :jobId, :loadedDate, :processingFile, :acquirer, :commitSize)
             ]]>
 			</value>
 		</property>
@@ -185,7 +267,6 @@
 	</bean>
 	
 	
-
 	 <bean id="settlementValidationProcessor"       
 	 	  class="org.springframework.batch.item.validator.ValidatingItemProcessor">   
 	 	<property name="validator">    
@@ -194,11 +275,9 @@
 	</bean>
 
 
-
 	<task:scheduled-tasks>
 		<task:scheduled ref="jobScheduler"
 			method="runDeceptiveDomainsJob" fixed-delay="${scheduled.delay}" />
 	</task:scheduled-tasks>
-
-
+	
 </beans>
