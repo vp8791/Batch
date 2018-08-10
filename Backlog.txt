@@ -1,0 +1,5 @@
+Seperate jobs for each acquirer  - Release 4.2
+Skip items table
+Job end time
+Job Success/Fail flag
+Field validations
