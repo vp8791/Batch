@@ -96,6 +96,8 @@ public class JobScheduler {
 						processingDirectry, acquirer);
 				
 				for (String processingFileName : filenamestoProcess) {		
+					SequenceGenerator instance = SequenceGenerator.getInstance();			
+					
 					Long jobId = daoOperations.getJobId();					
 					System.out.println("About to Process Job with following parameters");
 					System.out.println("jobId(" + jobId + ")");
