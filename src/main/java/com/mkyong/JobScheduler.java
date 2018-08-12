@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import javax.sql.DataSource;
 
@@ -96,9 +97,9 @@ public class JobScheduler {
 						processingDirectry, acquirer);
 				
 				for (String processingFileName : filenamestoProcess) {		
-					SequenceGenerator instance = SequenceGenerator.getInstance();			
-					
-					Long jobId = daoOperations.getJobId();					
+					SequenceGenerator instance = SequenceGenerator.getInstance();	
+
+					Long jobId = daoOperations.getJobId();				
 					System.out.println("About to Process Job with following parameters");
 					System.out.println("jobId(" + jobId + ")");
 					System.out.println("landingDirectory(" + landingDirectory + ")");
@@ -108,7 +109,7 @@ public class JobScheduler {
 					System.out.println("commitSize(" + commitCount + ")");
 					System.out.println("jobId(" + jobId + ")");
 					System.out.println("Processing  File by JobId(" +  jobId + ")>" + processingFileName + "<  at " + new Date(System.currentTimeMillis()));
-					
+			
 					JobParameters jobParams = new JobParametersBuilder().addString("currentJobStartTime", reportDate)
 							.addString("landingDirectory", landingDirectory)
 							.addString("processingDirectry", processingDirectry)

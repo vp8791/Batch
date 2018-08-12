@@ -25,7 +25,6 @@ public class DaoOperationsImpl implements DaoOperations {
 
 	@Override
 	public Long getJobId() {
-		System.out.println("About to Get Sequence Id(JOB_ID_SEQUENCE)" );
 		String sql = "select JOB_ID_SEQUENCE.nextval from dual";
 		Long queryForObject = (Long) jdbcTemplate.queryForObject(sql, Long.class);
 		return queryForObject.longValue();
