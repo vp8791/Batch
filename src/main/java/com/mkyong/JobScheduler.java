@@ -84,7 +84,7 @@ public class JobScheduler {
 			String reportDate = df.format(currentJobStartTime);
 			
 			
-			System.out.println("==========About to Start Job============");
+			System.out.println("==========About to Start Job============" + "Release-4.2");
 			for (String acquirer : SUPPORTED_ACQUIRERS) {
 				String landingDirectory = daoOperations.getLandingDirectory();
 				String processingDirectry = daoOperations.getProcessingDirectory();
@@ -95,8 +95,7 @@ public class JobScheduler {
 				List<String> filenamestoProcess = BatchFileUtils.getFileNamesToBeProcessed(landingDirectory,
 						processingDirectry, acquirer);
 				
-				for (String processingFileName : filenamestoProcess) {	
-					SequenceGenerator instance = SequenceGenerator.getInstance();			
+				for (String processingFileName : filenamestoProcess) {		
 					Long jobId = daoOperations.getJobId();					
 					System.out.println("About to Process Job with following parameters");
 					System.out.println("jobId(" + jobId + ")");
