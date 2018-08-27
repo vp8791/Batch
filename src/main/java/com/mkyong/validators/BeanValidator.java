@@ -30,7 +30,20 @@ public class BeanValidator implements Validator, InitializingBean {
 		if (constraintViolations.size() > 0) {
 			buildValidationException(constraintViolations);
 		}
-	} 
+	}
+
+	public List<String> validateObject(Object target) throws ValidationException {
+		List<String> errors = new ArrayList<String>();
+		Set<ConstraintViolation<Object>> constraintViolations = validator.validate(target);
+		
+		
+		if (constraintViolations.size() > 0) {
+			for (ConstraintViolation<Object> constraintViolation : constraintViolations) {
+				errors.add(constraintViolation.getMessage());
+			}
+		}
+		return errors;
+	}
 
 	private void buildValidationException(Set<ConstraintViolation<Object>> constraintViolations) {
 		StringBuilder message = new StringBuilder();
