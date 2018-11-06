@@ -1,4 +1,4 @@
-package com.sky.content.shopping.runner;
+package com;
 
 import org.junit.runner.RunWith;
 
