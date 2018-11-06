@@ -8,7 +8,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         format = { "pretty", "html:target/cucumber-html" , "json:target/cucumber-report-json.json"},
-        glue = "com.sky.content.shopping.shoppingitems"
+        glue = {"com.sky.content.shopping.shoppingitems", "com.mykyong.bdd" }
 )
 public class RunShoppingItemsTest {
 }
