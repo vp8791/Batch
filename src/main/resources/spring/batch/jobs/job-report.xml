@@ -231,17 +231,8 @@
 					</bean>
 				</property>		
 				<property name="fieldSetMapper">
-
-					<!-- return back to reader, rather than a mapped object. -->
-					<!-- <bean class="org.springframework.batch.item.file.mapping.PassThroughFieldSetMapper" 
-						/> -->
-
 					<!-- map to an object -->
-					<bean
-						class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
-						<property name="prototypeBeanName" value="report" />
-					</bean>
-
+					<bean class="com.mkyong.model.ReportFieldSetMapper" />
 				</property>
 			</bean>
 		</property>
