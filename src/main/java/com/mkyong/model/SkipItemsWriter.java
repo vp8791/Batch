@@ -5,7 +5,21 @@ public class SkipItemsWriter {
 	private Long jobId;
 	private String processingFile;
 	private String acquirer;
+	private String exception;
+	private String skipPhase;
 	
+	public String getException() {
+		return exception;
+	}
+	public void setException(String exception) {
+		this.exception = exception;
+	}
+	public String getSkipPhase() {
+		return skipPhase;
+	}
+	public void setSkipPhase(String skipPhase) {
+		this.skipPhase = skipPhase;
+	}
 	public String getCreditCardNumber() {
 		return creditCardNumber;
 	}
