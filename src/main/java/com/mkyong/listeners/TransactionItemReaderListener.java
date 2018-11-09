@@ -22,7 +22,8 @@ public class TransactionItemReaderListener implements ItemReadListener<Report> {
 
 	@Override
 	public void onReadError(Exception ex) {
-		//System.out.println("TransactionItemReaderListener - onReadError");	
+		ex.printStackTrace();
+		System.out.println("TransactionItemReaderListener - onReadError");	
 	}
 
 }

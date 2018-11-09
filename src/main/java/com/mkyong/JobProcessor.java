@@ -33,14 +33,13 @@ public class JobProcessor implements ItemProcessor<Report, Report> {
 	 private JdbcTemplate jdbcTemplate;
 
 	@Override
-	public Report process(Report inputItem) throws Exception {		
+	public Report process(Report inputItem) throws Exception {	
+		System.out.println("Processing Item:" + inputItem );
 		inputItem.setJobId(Long.parseLong(jobId));
 		inputItem.setLoadedDate(jobStartTime);
 		inputItem.setProcessingFile(processingFile);
 		inputItem.setAcquirer(acquirer);
 		inputItem.setCommitSize(Long.parseLong(chunkCommitSize));		
-		System.out.println("Processing Item:" + inputItem );
-		
 		return inputItem;
 	}
 
