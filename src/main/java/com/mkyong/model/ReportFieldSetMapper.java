@@ -22,12 +22,11 @@ public class ReportFieldSetMapper implements FieldSetMapper<Report> {
 			e.printStackTrace();
 		}
 		report.setAmount(fieldSet.readString(2));
-		report.setAmount(fieldSet.readString(3));
-		report.setMccCode(fieldSet.readString(4));
-		report.setTerminalId(fieldSet.readString(5));
-		report.setTransactionReference(fieldSet.readString(6));
-		report.setModeOfPayment(fieldSet.readString(7));
-
+		report.setMccCode(fieldSet.readString(3));
+		report.setTerminalId(fieldSet.readString(4));
+		report.setTransactionReference(fieldSet.readString(5));
+		report.setModeOfPayment(fieldSet.readString(6));
+		System.out.println("Processing Report: " + report);
 		return report;
 
 	}
