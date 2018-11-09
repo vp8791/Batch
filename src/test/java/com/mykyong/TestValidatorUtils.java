@@ -31,9 +31,11 @@ public class TestValidatorUtils {
 		Date currentDate = new Date(System.currentTimeMillis());
 		Date oneDayBefore = new Date(currentDate.getTime() - 10);
 		report.setOrderDate(oneDayBefore);
-		
-		report.setAmount("996");
-		
+		report.setAmount("996");		
+		report.setMccCode("A34555");		
+		report.setTerminalId("T45454");
+		report.setTransactionReference("988301302703701");
+		report.setModeOfPayment("ChipAndPin");
 		
 		return report;
 	}
