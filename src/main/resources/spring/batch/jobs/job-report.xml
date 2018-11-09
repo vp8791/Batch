@@ -246,7 +246,7 @@
 			<value>
             <![CDATA[        
             	insert into ACQUIRER_SETTLEMENTS(CREDIT_CARD_NUMBER, ORDER_DATE, AMOUNT, MCC_CODE,TERMINAL_ID, TRANSACTION_REF, MODE_OF_PAYMENT,META_JOB_ID, META_JOB_START_TIME, META_PROCESSING_FILE, META_ACQUIRER, META_CHUNK_COMMIT_SIZE) values
-            	 (:creditCardNumber, :orderDate , :amount , :mccCode,:terminalId, ,:transactionReference , :modeOfPayment, :jobId, :loadedDate, :processingFile, :acquirer, :commitSize)
+            	 (:creditCardNumber, :orderDate , :amount , :mccCode,:terminalId, :transactionReference , :modeOfPayment, :jobId, :loadedDate, :processingFile, :acquirer, :commitSize)
             ]]>
 			</value>
 		</property>
