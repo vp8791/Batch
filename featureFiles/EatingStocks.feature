@@ -18,3 +18,4 @@ Feature: Eating Stock Checker
 	  | 12    | 3   | 9    |
 	  | 17    | 5   | 12   |
 	  | 28    | 5   | 23   |
+	  | 100   | 10  | 90   |
