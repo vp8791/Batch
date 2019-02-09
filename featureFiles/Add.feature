@@ -3,7 +3,7 @@ Feature:  Adding numbers with a Calculator
   As someone who is bad at math
   I want to be able to add numbers using a Calculator
   
-  Scenario:  Add two positive numbers
+  Scenario Outline:  Add two positive numbers
     Given I have a Calculator
     When I add <firstNumber> and <secondNumber>
     Then the sum should be <sum>

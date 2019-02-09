@@ -3,7 +3,7 @@ Feature:  Multiplying numbers with a Calculator
   As someone who is bad at math
   I want to be able to Multiply numbers using a Calculator
   
-  Scenario:  Multiply two positive numbers
+  Scenario Outline:  Multiply two positive numbers
     Given I have a Calculator
     When I Multiply <firstNumber> and <secondNumber>
     Then the Multiplication  amount should be <multiplicationAmount>

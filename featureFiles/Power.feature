@@ -3,7 +3,7 @@ Feature:  Power of  numbers with a Calculator
   As someone who is bad at math
   I want to be able to find Power numbers using a Calculator
   
-  Scenario:  Power two positive numbers
+  Scenario Outline:  Power two positive numbers
     Given I have a Calculator
     When I Power <firstNumber> and <secondNumber>
     Then the Power amount should be <powerAmount>

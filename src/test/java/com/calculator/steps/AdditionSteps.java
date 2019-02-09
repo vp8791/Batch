@@ -15,9 +15,6 @@ import static org.hamcrest.Matchers.*;
 public class AdditionSteps  {
     Calculator calculator;
 
-    @Given("^I have a Calculator$")
-    public void i_have_a_calculator() throws Throwable {
-    }
 
     @When("^I add (.+) and (.+)$")
     public void i_add_and(String firstnumber, String secondnumber) throws Throwable {
