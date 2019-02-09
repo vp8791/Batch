@@ -15,10 +15,6 @@ import static org.hamcrest.Matchers.*;
 public class PowerSteps {
     Calculator calculator;
 
-    @Given("^I have a Calculator$")
-    public void i_have_a_calculator() throws Throwable {
-    }
-
     @When("^I Power (.+) and (.+)$")
     public void i_power_and(String firstnumber, String secondnumber) throws Throwable {
         calculator = new Calculator(Double.parseDouble(firstnumber), Double.parseDouble(secondnumber), CalculatorOperations.POWER);

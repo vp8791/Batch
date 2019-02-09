@@ -14,10 +14,6 @@ import static org.hamcrest.Matchers.*;
 public class  SubstractionSteps {
     Calculator calculator;
 
-    @Given("^I have a Calculator$")
-    public void i_have_a_calculator() throws Throwable {
-    }
-
     @When("^I substract (.+) and (.+)$")
     public void i_substract_and(String firstnumber, String secondnumber) throws Throwable {
         calculator = new Calculator(Double.parseDouble(firstnumber), Double.parseDouble(secondnumber), CalculatorOperations.SUBSTRACTION);

@@ -1,0 +1,24 @@
+version: '3.3'
+
+services:
+  localjwtdb:
+    image: mysql:5.6
+    container_name: localjwtdb
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+    networks:
+      - angulardockernetwork    
+  PricingApp:
+    image: devglan/spring-boot-jwt-auth:latest
+    container_name: devglan/spring-boot-jwt-auth
+    ports:
+      - 8098:8098
+    depends_on:
+        - localjwtdb     
+    networks:
+      - angulardockernetwork  
+networks:
+  angulardockernetwork:
+    driver: bridge

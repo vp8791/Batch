@@ -7,5 +7,7 @@ public interface CalculatorOperations {
     String DIVISION = "/";
     String  MULTIPLICATION = "*";
     String POWER = "^";
+    String REMINDER = "RM";
+    String QUOTIENT = "QT";
     Double ERROR =  0.5;
 }

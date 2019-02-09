@@ -17,10 +17,6 @@ public class MultiplicationSteps {
 
     Calculator calculator;
 
-    @Given("^I have a Calculator$")
-    public void i_have_a_calculator() throws Throwable {
-    }
-
     @When("^I Multiply (.+) and (.+)$")
     public void i_multiply_and(String firstnumber, String secondnumber) throws Throwable {
         calculator = new Calculator(Double.parseDouble(firstnumber), Double.parseDouble(secondnumber), CalculatorOperations.MULTIPLICATION);

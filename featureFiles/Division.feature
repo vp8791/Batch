@@ -3,7 +3,7 @@ Feature:  Dividing numbers with a Calculator
   As someone who is bad at math
   I want to be able to Divide numbers using a Calculator
   
-  Scenario:  Divide two positive numbers
+  Scenario Outline:  Divide two positive numbers
     Given I have a Calculator
     When I Divide <firstNumber> and <secondNumber>
     Then the Division  amount should be <divisionAmount>
