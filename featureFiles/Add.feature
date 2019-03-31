@@ -9,9 +9,13 @@ Feature:  Adding numbers with a Calculator
     Then the sum should be <sum>
 
   Examples:
-    | firstNumber | secondNumber | sum  |
+    | firstNumber | secondNumber | sum   | 
     |  12   	  |	    5  		 |  17   |
 	|  17   	  |	    5  		 |  22   |
 	|  18   	  |	   2  		 |  20   |
 	|  11   	  |	    5  		 |  16   |
-	|  12   	  |	    5  		 |  17   |	
+	|  18   	  |	    3  		 |  21   |	
+	|  19   	  |	    9 		 |  28   |
+	|  144   	  |	   56  		 |  200  |
+	|  130   	  |	    20		 |  150  |
+	|  200   	  |	   100  	 |  300  |
