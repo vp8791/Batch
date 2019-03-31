@@ -11,5 +11,7 @@ Feature:  Adding numbers with a Calculator
   Examples:
     | firstNumber | secondNumber | sum  |
     |  12   	  |	    5  		 |  17   |
-	
-	
+	|  17   	  |	    5  		 |  22   |
+	|  18   	  |	   2  		 |  20   |
+	|  11   	  |	    5  		 |  16   |
+	|  12   	  |	    5  		 |  17   |	
