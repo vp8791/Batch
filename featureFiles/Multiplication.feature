@@ -10,5 +10,6 @@ Feature:  Multiplying numbers with a Calculator
 
   Examples:
     | firstNumber | secondNumber | multiplicationAmount  |
-    |  12   	  |	    5  		 |  		60   	     |
-	
+    | 2           | 3            | 6                     |
+    |5            | 6            | 30                    |
+    | 10          | 10           | 100                   |
