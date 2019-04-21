@@ -10,6 +10,7 @@ Feature:  Power of  numbers with a Calculator
 
   Examples:
     | firstNumber | secondNumber | powerAmount  |
-    |  3   	  |	    2  		 |  		9   	   |
-	
-	
+    |  3   	  |	    2  	 |  	9   	|
+    |  4   	  |	    2  	 |  	16  	|
+    | 5  	  |	    2  	 |  	25   	|
+    |  8  	  |	    2  	 |  	64  	|  	

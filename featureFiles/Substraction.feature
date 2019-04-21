@@ -10,6 +10,10 @@ Feature:  Substracting numbers with a Calculator
 
   Examples:
     | firstNumber | secondNumber | substractionAmount  |
-    |  12   	  |	    5  		 |  		7   	   |
+    |  12   	  |	    5  	 |  		7      |
+    | 20          |	   10  	 |  		10     |
+    |  30  	  |	    5  	 |  		25     |
+    | 70         |	   10  	 |  		60     | 
+ 
 	
 	
